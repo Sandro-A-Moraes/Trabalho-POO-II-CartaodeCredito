@@ -4,6 +4,7 @@ import models.CartaoDeCredito;
 import models.Compra;
 
 import java.util.Scanner;
+import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
@@ -47,11 +48,13 @@ public class Main {
 
         System.out.println("\n\nExibindo compras:");
 
-        for (Compra iCompra : cartao.getCompras()) {
-            System.out.println(String.format("[%d] - %s", cartao.getCompras().indexOf(iCompra), iCompra));
+        Collections.sort(cartao.getCompras()); // Ordena em ordem crescente
+
+        for (Compra v : cartao.getCompras()) {
+            System.out.println("Produto: " + v.getDescricao() + " - R$ " + v.getValor());
         }
 
-        System.out.println("\n\nSaldo restante:");
+        System.out.println("\nSaldo restante:");
         System.out.println("R$ " + cartao.getSaldo());
 
     }
